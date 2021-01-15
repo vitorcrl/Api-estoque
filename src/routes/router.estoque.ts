@@ -1,15 +1,15 @@
 import { Router } from 'express';
+import usersRouter from './users.routes';
 
 const routerEstoque = Router();
 
 routerEstoque.get('/', (request, response) => {
   return response.json({ message: 'hellodsds world' });
 });
-routerEstoque.post('/estoque', (request, response) => {
-  return response.json({ message: 'helloo0ooworld' });
-});
 
-routerEstoque.put('/put', (request, response) => {
+routerEstoque.use('/', usersRouter);
+
+routerEstoque.put('/', (request, response) => {
   return response.json({ message: 'hello world' });
 });
 
