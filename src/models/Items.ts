@@ -24,6 +24,10 @@ class Item {
   @Column()
   provider_id: string;
 
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'provider_id' })
+  provider: User;
+
   @CreateDateColumn()
   created_at: Date;
 
