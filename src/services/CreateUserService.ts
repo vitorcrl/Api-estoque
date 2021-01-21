@@ -2,12 +2,12 @@ import { getRepository } from 'typeorm';
 import User from '../models/Users';
 
 interface RequestDTO {
-  name: string;
+  user: string;
   email: string;
 }
 
 class CreateUserService {
-  public async execute({ name, email }: RequestDTO): Promise<User> {
+  public async execute({ user, email }: RequestDTO): Promise<User> {
     const usersRepository = getRepository(User);
 
     const checkUsersExists = await usersRepository.findOne({
@@ -16,12 +16,12 @@ class CreateUserService {
     if (checkUsersExists) {
       throw new Error('email address already exists');
     }
-    const user = usersRepository.create({
-      name,
+    const users = usersRepository.create({
+      user,
       email,
     });
-    await usersRepository.save(user);
-    return user;
+    await usersRepository.save(users);
+    return users;
   }
 }
 export default CreateUserService;

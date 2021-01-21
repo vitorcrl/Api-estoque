@@ -5,6 +5,7 @@ import usersRouter from './routes/users.routes';
 import routes from './routes/index';
 
 import './database';
+import registerItems from './routes/register.items';
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(routes);
 
 app.get('/', routes);
 app.post('/users', usersRouter);
+app.post('/items', registerItems);
 app.put('/put', routerEstoque);
 
 app.listen(3333, () => {

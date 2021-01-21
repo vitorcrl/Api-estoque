@@ -5,12 +5,12 @@ const usersRouter = Router();
 
 usersRouter.post('/users', async (request, response) => {
   try {
-    const { name, email } = request.body;
+    const { user, email } = request.body;
 
     const createUser = new CreateUserService();
-    const user = await createUser.execute({ name, email });
+    const users = await createUser.execute({ user, email });
 
-    return response.json(user);
+    return response.json(users);
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }
