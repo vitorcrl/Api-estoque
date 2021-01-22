@@ -5,10 +5,10 @@ const usersRouter = Router();
 
 usersRouter.post('/users', async (request, response) => {
   try {
-    const { user, email } = request.body;
+    const { user, password } = request.body;
 
     const createUser = new CreateUserService();
-    const users = await createUser.execute({ user, email });
+    const users = await createUser.execute({ user, password });
 
     return response.json(users);
   } catch (error) {

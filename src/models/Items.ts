@@ -22,6 +22,9 @@ class Item {
   quantity: number;
 
   @Column()
+  user: string;
+
+  @Column()
   provider_id: string;
 
   @ManyToOne(() => User)

@@ -15,6 +15,7 @@ export default class RegisterItems1610851104275 implements MigrationInterface {
           },
           { name: 'name', type: 'varchar' },
           { name: 'quantity', type: 'varchar' },
+          { name: 'user', type: 'varchar' },
           { name: 'provider_id', type: 'uuid', isNullable: true },
           { name: 'created_at', type: 'timestamp', default: 'now()' },
           { name: 'updated_at', type: 'timestamp', default: 'now()' },

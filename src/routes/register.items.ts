@@ -1,7 +1,18 @@
 import { Router } from 'express';
 import CreateItemsService from '../services/CreateItemsService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import { getCustomRepository } from 'typeorm';
+import itemRepository from '../repositories/ItemsRepository';
+
 const registerItems = Router();
+
+registerItems.use(ensureAuthenticated);
+
+registerItems.get('/', async (request, response) => {
+  const itemsRepository = getCustomRepository(itemRepository);
+  return response.json(itemsRepository);
+});
 
 registerItems.post('/', async (request, response) => {
   try {

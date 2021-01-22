@@ -1,30 +1,25 @@
 import { getRepository } from 'typeorm';
-import Items from '../models/Items';
+import Item from '../models/Items';
 
 interface RequestDTO {
   name: string;
   quantity: number;
-  provider_id: string;
+  user: string;
 }
 
 class CreateItemsService {
-  public async execute({
-    name,
-    quantity,
-    provider_id,
-  }: RequestDTO): Promise<Items> {
-    const itemRepository = getRepository(Items);
+  public async execute({ name, quantity, user }: RequestDTO): Promise<Item> {
+    const itemRepository = getRepository(Item);
 
-    const checkUsersExists = await itemRepository.findOne({
-      where: { provider_id },
-    });
-    if (checkUsersExists) {
-      throw new Error('Usuario not found');
+    const checkUser = await itemRepository.findOne({ where: { user } });
+    if (checkUser) {
+      throw new Error('User not exist');
     }
+
     const items = itemRepository.create({
       name,
       quantity,
-      provider_id,
+      user,
     });
     await itemRepository.save(items);
     return items;

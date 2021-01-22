@@ -9,6 +9,6 @@ class User {
   user: string;
 
   @Column()
-  email: string;
+  password: string;
 }
 export default User;
