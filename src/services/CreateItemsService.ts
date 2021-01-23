@@ -11,9 +11,9 @@ class CreateItemsService {
   public async execute({ name, quantity, user }: RequestDTO): Promise<Item> {
     const itemRepository = getRepository(Item);
 
-    const checkUser = await itemRepository.findOne({ where: { user } });
-    if (checkUser) {
-      throw new Error('User not exist');
+    const checkQuantity = await itemRepository.findOne({ where: { quantity } });
+    if (checkQuantity || quantity <= 0) {
+      throw new Error('Minimum quantity of 1 unit ');
     }
 
     const items = itemRepository.create({
