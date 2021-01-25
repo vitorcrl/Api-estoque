@@ -70,9 +70,7 @@ Nessa rota GET, é realizado a solicitação de entrada de items sendo pesquisad
 
 PUT/Items
 
-Na rota PUT realizamos as retiradas dos items utilizados na produção dos bolos da nossa Fábrica.
-
-Para a retirada precisamos das sequintes requisições Id do produto, quantity de retirada, e user que retirou os  items. A rota que utilizamos para a utilização desse PUT é  "[http://localhost:3333](http://localhost:3333/)/items" de forma que fique funcional.
+Na rota PUT realizamos as retiradas dos items utilizados na produção dos bolos da nossa Fábrica. Para a retirada precisamos das sequintes requisições Id do produto, quantity de retirada, e user que retirou os  items. A rota que utilizamos para a utilização desse PUT é  "[http://localhost:3333](http://localhost:3333/)/items" de forma que fique funcional.
 
 
 
