@@ -36,7 +36,7 @@ registerItems.post('/items', async (request, response) => {
 registerItems.put('/', async (request, response) => {
   try {
     const { id, quantity, user } = request.body;
-    console.log(request.body);
+
     const registerItem = new AlterItemService();
     const alterItem = await registerItem.execute({ id, quantity, user });
     return response.json(alterItem);

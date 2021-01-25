@@ -8,17 +8,19 @@ interface Request {
   user: User;
 }
 class AlterItemService {
-  public async execute({ id, quantity, user }: Request): Promise<void> {
+  public async execute({ id, quantity, user }: Request): Promise<Item> {
     const alterRepository = getRepository(Item);
 
     const alterItem = await alterRepository.findOne(id);
     if (!alterItem) {
       throw new Error('Not possible to find item');
     }
-    if (alterRepository) {
-      await alterRepository.update(quantity, user);
+    if (alterItem) {
+      await alterRepository.softDelete({ quantity });
+      await alterRepository.create({ quantity });
     }
     await alterRepository.save(alterItem);
+    return alterItem;
   }
 }
 export default AlterItemService;
